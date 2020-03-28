@@ -8,6 +8,8 @@ import android.view.MotionEvent;
 
 public class RemoteActivity extends AppCompatActivity {
 
+    private ConnectorInterface connector;
+
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         int x = (int) event.getX();
@@ -20,7 +22,9 @@ public class RemoteActivity extends AppCompatActivity {
                 break;
             case MotionEvent.ACTION_MOVE:
                 Log.i("TAG", location);
-                //TODO sent data
+                if((connector != null) && connector.isConnected()) {
+                    connector.sendData(location);
+                }
                 break;
             case MotionEvent.ACTION_UP:
                 Log.i("TAG", "touched up");
@@ -33,5 +37,7 @@ public class RemoteActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_remote);
+
+        connector = ((CustomApplication)getApplicationContext()).getConnector();
     }
 }

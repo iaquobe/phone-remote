@@ -2,26 +2,22 @@ package com.example.phone_remote_app;
 
 import android.app.Application;
 import android.util.Log;
-import java.io.DataOutputStream;
-import java.net.Socket;
-import androidx.appcompat.app.AppCompatActivity;
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
 
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.net.Socket;
 
 public class Connector implements ConnectorInterface {
 
-    public boolean connected = false;
-
+    private boolean connected = false;
     private final int port = 9000;
     private Socket client;
     private String ip;
     private DataOutputStream out;
-    private Application applicaton;
+
+    public boolean isConnected() {
+        return connected;
+    }
 
     public Connector(String ip) {
         this.ip = ip;
@@ -30,29 +26,30 @@ public class Connector implements ConnectorInterface {
 
     @Override
     public boolean openConnection() {
-        Log.d("","Trying to connect to: " + ip);
-        if (ip == null || !validIP(ip)) return false;
+        boolean success = true;
+        Log.d("", "Trying to connect to: " + ip);
+        if (ip == null || !validIP(ip)) success = false;
 
         try {
             this.client = new Socket(ip, port);
-        } catch (Exception e) {
-            Log.d("", e.toString());
-            return false;
-        }
-
-        try {
             out = new DataOutputStream(client.getOutputStream());
         } catch (Exception e) {
             Log.d("", e.toString());
+            success = false;
+        }
+        if(!success){
+            Log.d("","Connecting not successful");
             return false;
         }
+
+        connected = true;
         return true;
     }
 
     @Override
     public boolean sendData(String data) {
         try {
-            out.writeUTF(data);
+            out.writeChars(data);
             out.flush();
         } catch (Exception e) {
             Log.d("", e.toString());
@@ -63,16 +60,24 @@ public class Connector implements ConnectorInterface {
 
     @Override
     public boolean closeConnection() {
-        if (!connected){
+        if (!connected) {
             return false;
         }
-        return false;
+        try {
+            out.close();
+            client.close();
+            connected = false;
+        } catch (IOException e) {
+            Log.d("", e.toString());
+            return false;
+        }
+        return true;
     }
 
-    private boolean validIP(String ip){
+    private boolean validIP(String ip) {
         char[] ipArray = ip.toCharArray();
         for (char c : ipArray) {
-            if (((c < '0') || (c > '9')) && c != '.'){
+            if (((c < '0') || (c > '9')) && c != '.') {
                 return false;
             }
         }

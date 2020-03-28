@@ -7,4 +7,6 @@ public interface ConnectorInterface {
     boolean sendData(String data);
 
     boolean closeConnection();
+
+    boolean isConnected();
 }
