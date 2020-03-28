@@ -26,15 +26,12 @@ public class RemoteActivity extends AppCompatActivity {
                 Log.i("TAG", "touched up");
                 break;
         }
-
         return true;
     }
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_remote);
-
     }
 }
