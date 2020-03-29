@@ -13,6 +13,14 @@ in Powershell run:
 ### Linux
 run:
 `install.sh`
+on Linux pyautogui needs tkinter to work.
+check for your package manager what to install
+
+pacman:
+`pacman -S python-pmw`
+
+apt
+`sudo apt-get install python-tk`
 
 # Dependencies
 python modules:
