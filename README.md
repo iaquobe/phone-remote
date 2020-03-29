@@ -1,24 +1,24 @@
-#Phone Remote
+# Phone Remote
 control your PC with your phone as remote.
 
 
-#Installation
+# Installation
 
-##Server
+## Server
 
-###Windows
+### Windows
 in Powershell run:
 `install.ps`
 
-###Linux
+### Linux
 run:
 `install.sh`
 
-#Dependencies
+# Dependencies
 python modules:
 `parse`,`pyautogui`,`qrcode`
 
-#Usage
+# Usage
 start the Server ./Server/server.py
 
 connect your phone.

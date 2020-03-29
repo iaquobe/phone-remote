@@ -5,6 +5,7 @@
 #include <string.h>
 
 #define PORT 9000
+#define ADDRESS "192.168.178.62"
 
 
 int main(int argc, char **argv){
@@ -17,7 +18,7 @@ int main(int argc, char **argv){
 	serv_addr.sin_family = AF_INET;
 	serv_addr.sin_port = htons(PORT);
 
-	if(inet_pton(AF_INET, "127.0.0.1", &serv_addr.sin_addr)<=0)
+	if(inet_pton(AF_INET, ADDRESS, &serv_addr.sin_addr)<=0)
 		return -1;
 
 	if(connect(sock, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) < 0)
