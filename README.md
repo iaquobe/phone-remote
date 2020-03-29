@@ -19,7 +19,8 @@ python modules:
 `parse`,`pyautogui`,`qrcode`
 
 # Usage
-start the Server ./Server/server.py
+start the Server 
+`python ./Server/server.py`
 
 connect your phone.
 
