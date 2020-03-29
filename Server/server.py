@@ -1,10 +1,16 @@
 import socket
 import pyautogui
+import qrcode
 from parse import *
 
 
-HOST = "127.0.0.1"
+HOST = ""
 PORT = 9000
+
+def show_connection():
+    name = "{}/{}/".format(socket.gethostbyname(socket.gethostname()), PORT)
+    img = qrcode.make(name)
+    img.show()
 
 def read(conn):
     while True:
@@ -19,6 +25,9 @@ def read(conn):
 
 def connect():
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+        
+        show_connection(name)
+
         s.bind((HOST, PORT))
         s.listen()
         conn, addr = s.accept()
