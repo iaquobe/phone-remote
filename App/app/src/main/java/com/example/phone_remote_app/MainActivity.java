@@ -2,13 +2,12 @@ package com.example.phone_remote_app;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     Button startButton;
     Button optionButton;
     Button connectButton;
+    MainActivity main = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,12 +62,9 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View v) {
             if (connector == null) {
                 Log.d("", "Creating new Connector");
-                connector = new Connector(((CustomApplication)getApplicationContext()).getIp());
+                connector = new Connector(((CustomApplication)getApplicationContext()).getIp(), main);
                 Log.d("", "Opening connection");
-                boolean success = connector.openConnection();
-                if (!success){
-                    removeConnector();
-                }
+                connector.openConnection();
             } else {
                 Log.d("", "Connector already active");
             }
@@ -88,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-    private void removeConnector() {
+    public void removeConnector() {
         Log.d("","Removing connector");
         if (connector != null){
             connector.closeConnection();
