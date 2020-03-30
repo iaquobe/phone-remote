@@ -2,18 +2,11 @@ import socket
 import pyautogui
 import qrcode
 from parse import *
-from Crypto.Cipher import AES
-from Crypto.Random import get_random_bytes
 
 
 HOST = ""
 PORT = 9000
 
-def get_eas():
-    key = get_random_bytes(16)
-    cipher = AES.new(key, AES.MODE_CBC)
-
-    return cipher, key
 
 
 def show_connection():
