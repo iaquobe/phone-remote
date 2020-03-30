@@ -1,12 +1,14 @@
 package com.example.phone_remote_app;
 
+import android.os.AsyncTask;
+
 public interface ConnectorInterface {
 
-    boolean openConnection();
+    AsyncTask openConnection();
 
-    boolean sendData(String data);
+    AsyncTask sendData(String data);
 
-    boolean closeConnection();
+    AsyncTask closeConnection();
 
     boolean isConnected();
 }
