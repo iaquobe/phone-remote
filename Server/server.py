@@ -16,13 +16,14 @@ def get_eas():
     return cipher, key
 
 
-def show_connection(key):
+def show_connection():
     name = "{}/{}/".format(socket.gethostbyname(socket.gethostname()), PORT)
+    print(name)
     img = qrcode.make(name)
-    img.show()
+    #img.show()
 
 
-def read(conn, cipher):
+def read(conn):
     while True:
         data = conn.recv(1024).decode("utf-8")
         if not data:
@@ -34,7 +35,7 @@ def read(conn, cipher):
         if data.startswith("b"):
             button = parse("b {}\n", data)
             pyautogui.click(button=button)
-        if data.startswith("k")
+        if data.startswith("k"):
             text = parse("k {}\n", data)
             pyautogui.press(text)
 
@@ -42,16 +43,15 @@ def read(conn, cipher):
 
 def connect():
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-        cipher, key = get_eas()
         
-        show_connection(key)
+        show_connection()
 
         s.bind((HOST, PORT))
         s.listen()
         conn, addr = s.accept()
         with conn:
             print("Connected by", addr)
-            read(conn, cipher)
+            read(conn)
         
 
 connect()
