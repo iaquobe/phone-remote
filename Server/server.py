@@ -17,20 +17,33 @@ def show_connection():
 
 
 def read(conn):
+    down = False
+    x_last = 0
+    y_last = 0
+
     while True:
         data = conn.recv(1024).decode("utf-8")
         if not data:
             break
         
         if data.startswith("m"):
-            x, y = parse("m {:d} {:d}\n", data)
-            pyautogui.move(x, y)
+            if down:
+                x_last, y_last = parse("m {:d} {:d}\n", data)
+                down = False
+            else:
+                x, y = parse("m {:d} {:d}\n", data)
+                pyautogui.move(x - x_last, y - y_last)
+                x_last = x
+                y_last = y
         if data.startswith("b"):
             button = parse("b {}\n", data)
             pyautogui.click(button=button)
         if data.startswith("k"):
             text = parse("k {}\n", data)
             pyautogui.press(text)
+        if data.startswith("a"):
+            if data[2] == "d":
+                down = True
 
 
 
