@@ -30,18 +30,18 @@ def read(conn):
         
         if data.startswith("m"):
             if down:
-                x_last, y_last = parse("m {:d} {:d}\n", data)
+                x_last, y_last = parse("m {:d} {:d}", data)
                 down = False
             else:
-                x, y = parse("m {:d} {:d}\n", data)
+                x, y = parse("m {:d} {:d}", data)
                 pyautogui.move(x - x_last, y - y_last)
                 x_last = x
                 y_last = y
         if data.startswith("b"):
-            button = parse("b {}\n", data)
+            button = parse("b {}", data)
             pyautogui.click(button=button)
         if data.startswith("k"):
-            text = parse("k {}\n", data)
+            text = parse("k {}", data)
             pyautogui.press(text)
         if data.startswith("a"):
             if data[2] == "d":
