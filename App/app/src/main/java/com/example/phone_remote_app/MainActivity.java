@@ -50,12 +50,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void updateConnectBut(){
-        //TODO CHANGE LISTENER!!!
         if(connector == null || !connector.isConnected()){
             connectButton.setText("Connect");
+            connectButton.setOnClickListener(connectClick);
             return;
         }
         connectButton.setText("Disconnect");
+        connectButton.setOnClickListener(disconnectClick);
     }
 
     private View.OnClickListener connectClick = new View.OnClickListener() {

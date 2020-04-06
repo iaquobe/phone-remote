@@ -7,11 +7,12 @@ import android.util.Log;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
+import java.nio.charset.StandardCharsets;
 
 public class Connector implements ConnectorInterface {
 
     private boolean connected = false;
-    private final int port = 9000;
+    private final int port = 10000;
     private Socket client;
     private String ip;
     private DataOutputStream out;
@@ -73,9 +74,8 @@ public class Connector implements ConnectorInterface {
     private boolean sendDataOp(String data) {
         Log.d("","Sending: " + data);
         try {
-            //TODO FIX
-            //out.writeUTF(data);
-            out.writeUTF("100");
+            data = data + ",";
+            out.write(data.getBytes(StandardCharsets.UTF_8));
             out.flush();
         } catch (Exception e) {
             Log.d("", e.toString());
