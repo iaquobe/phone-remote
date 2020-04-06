@@ -2,18 +2,11 @@ import socket
 import pyautogui
 import qrcode
 from parse import *
-#from Crypto.Cipher import AES
-#from Crypto.Random import get_random_bytes
 
 
 HOST = ""
-PORT = 9000
+PORT = 10000 
 
-def get_eas():
-#   key = get_random_bytes(16)
-#  cipher = AES.new(key, AES.MODE_CBC)
-
-    return cipher, key
 
 
 def show_connection():
@@ -24,25 +17,42 @@ def show_connection():
 
 
 def read(conn):
+    down = False
+    x_last = 0
+    y_last = 0
+
     while True:
         data = conn.recv(1024).decode("utf-8")
         if not data:
             break
+
+        print(data)
         
         if data.startswith("m"):
-            x, y = parse("m {:d} {:d}\n", data)
-            pyautogui.move(x, y)
+            if down:
+                x_last, y_last = parse("m {:d} {:d}", data)
+                down = False
+            else:
+                x, y = parse("m {:d} {:d}", data)
+                pyautogui.move(x - x_last, y - y_last)
+                x_last = x
+                y_last = y
         if data.startswith("b"):
-            button = parse("b {}\n", data)
+            button = parse("b {}", data)
             pyautogui.click(button=button)
         if data.startswith("k"):
-            text = parse("k {}\n", data)
+            text = parse("k {}", data)
             pyautogui.press(text)
+        if data.startswith("a"):
+            if data[2] == "d":
+                down = True
 
 
 
 def connect():
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+
+        s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         
         show_connection()
 
