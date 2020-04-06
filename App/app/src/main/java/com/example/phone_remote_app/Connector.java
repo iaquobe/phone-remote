@@ -66,12 +66,16 @@ public class Connector implements ConnectorInterface {
         }
 
         connected = true;
+        Log.d("", "Connected!");
         return true;
     }
 
     private boolean sendDataOp(String data) {
+        Log.d("","Sending: " + data);
         try {
-            out.writeChars(data);
+            //TODO FIX
+            //out.writeUTF(data);
+            out.writeUTF("100");
             out.flush();
         } catch (Exception e) {
             Log.d("", e.toString());
@@ -129,6 +133,7 @@ public class Connector implements ConnectorInterface {
     private class SendDataTask extends AsyncTask<String,Void,Boolean>{
         @Override
         protected Boolean doInBackground(String... strings) {
+            Log.d("","Sending: " + strings[0]);
             return sendDataOp(strings[0]);
         }
     }

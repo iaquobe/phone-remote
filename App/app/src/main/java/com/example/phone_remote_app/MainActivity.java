@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void updateConnectBut(){
+        //TODO CHANGE LISTENER!!!
         if(connector == null || !connector.isConnected()){
             connectButton.setText("Connect");
             return;
@@ -65,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
                 connector = new Connector(((CustomApplication)getApplicationContext()).getIp(), main);
                 Log.d("", "Opening connection");
                 connector.openConnection();
+                ((CustomApplication) getApplicationContext()).setConnector(connector);
             } else {
                 Log.d("", "Connector already active");
             }
@@ -90,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
         if (connector != null){
             connector.closeConnection();
             connector = null;
+            ((CustomApplication) getApplicationContext()).setConnector(null);
         }
     }
 

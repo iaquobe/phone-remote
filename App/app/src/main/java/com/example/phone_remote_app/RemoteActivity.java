@@ -20,7 +20,7 @@ public class RemoteActivity extends AppCompatActivity {
             case MotionEvent.ACTION_DOWN:
                 Log.i("TAG", "touched down");
                 if((connector != null) && connector.isConnected()) {
-                    connector.sendData("e d\n");
+                    connector.sendData("a d\n");
                 }
                 break;
             case MotionEvent.ACTION_MOVE:
@@ -32,7 +32,7 @@ public class RemoteActivity extends AppCompatActivity {
             case MotionEvent.ACTION_UP:
                 Log.i("TAG", "touched up");
                 if((connector != null) && connector.isConnected()) {
-                    connector.sendData("e u\n");
+                    connector.sendData("a u\n");
                 }
                 break;
         }
