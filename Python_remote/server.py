@@ -20,31 +20,33 @@ def read(conn):
     down = False
     x_last = 0
     y_last = 0
-
+    data = ""
     while True:
-        data = conn.recv(1024).decode("utf-8")
+        data = data + conn.recv(1024).decode("utf-8")
         if not data:
             break
-
-        print(data)
+        splited = data.split(",", 1)
+        order = splited[0]
+        data = splited[1]
+        print(order)
         
-        if data.startswith("m"):
+        if order.startswith("m"):
             if down:
-                x_last, y_last = parse("m {:d} {:d}", data)
+                x_last, y_last = parse("m {:d} {:d}", order)
                 down = False
             else:
-                x, y = parse("m {:d} {:d}", data)
+                x, y = parse("m {:d} {:d}", order)
                 pyautogui.move(x - x_last, y - y_last)
                 x_last = x
                 y_last = y
-        if data.startswith("b"):
-            button = parse("b {}", data)
+        if order.startswith("b"):
+            button = parse("b {}", order)
             pyautogui.click(button=button)
-        if data.startswith("k"):
-            text = parse("k {}", data)
+        if order.startswith("k"):
+            text = parse("k {}", order)
             pyautogui.press(text)
-        if data.startswith("a"):
-            if data[2] == "d":
+        if order.startswith("a"):
+            if order[2] == "d":
                 down = True
 
 
