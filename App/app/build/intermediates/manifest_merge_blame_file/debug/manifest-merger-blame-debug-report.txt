@@ -1,0 +1,63 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.phone_remote_app"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="19"
+8-->C:\Users\Marius\Desktop\Projekte\Phone_Remote\App\app\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="29" />
+9-->C:\Users\Marius\Desktop\Projekte\Phone_Remote\App\app\src\main\AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->C:\Users\Marius\Desktop\Projekte\Phone_Remote\App\app\src\main\AndroidManifest.xml:4:5-67
+11-->C:\Users\Marius\Desktop\Projekte\Phone_Remote\App\app\src\main\AndroidManifest.xml:4:22-64
+12    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+12-->C:\Users\Marius\Desktop\Projekte\Phone_Remote\App\app\src\main\AndroidManifest.xml:5:5-79
+12-->C:\Users\Marius\Desktop\Projekte\Phone_Remote\App\app\src\main\AndroidManifest.xml:5:22-76
+13
+14    <application
+14-->C:\Users\Marius\Desktop\Projekte\Phone_Remote\App\app\src\main\AndroidManifest.xml:6:5-22:20
+15        android:name="com.example.phone_remote_app.CustomApplication"
+15-->C:\Users\Marius\Desktop\Projekte\Phone_Remote\App\app\src\main\AndroidManifest.xml:7:9-42
+16        android:allowBackup="true"
+16-->C:\Users\Marius\Desktop\Projekte\Phone_Remote\App\app\src\main\AndroidManifest.xml:8:9-35
+17        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+17-->[androidx.core:core:1.0.1] C:\Users\Marius\.gradle\caches\transforms-2\files-2.1\8f8ab13dc8f4e84e14a8bb3d9ac92bc4\core-1.0.1\AndroidManifest.xml:22:18-86
+18        android:debuggable="true"
+19        android:icon="@mipmap/ic_launcher"
+19-->C:\Users\Marius\Desktop\Projekte\Phone_Remote\App\app\src\main\AndroidManifest.xml:9:9-43
+20        android:label="@string/app_name"
+20-->C:\Users\Marius\Desktop\Projekte\Phone_Remote\App\app\src\main\AndroidManifest.xml:10:9-41
+21        android:roundIcon="@mipmap/ic_launcher_round"
+21-->C:\Users\Marius\Desktop\Projekte\Phone_Remote\App\app\src\main\AndroidManifest.xml:11:9-54
+22        android:supportsRtl="true"
+22-->C:\Users\Marius\Desktop\Projekte\Phone_Remote\App\app\src\main\AndroidManifest.xml:12:9-35
+23        android:testOnly="true"
+24        android:theme="@style/AppTheme" >
+24-->C:\Users\Marius\Desktop\Projekte\Phone_Remote\App\app\src\main\AndroidManifest.xml:13:9-40
+25        <activity android:name="com.example.phone_remote_app.OptionsActivity" />
+25-->C:\Users\Marius\Desktop\Projekte\Phone_Remote\App\app\src\main\AndroidManifest.xml:14:9-53
+25-->C:\Users\Marius\Desktop\Projekte\Phone_Remote\App\app\src\main\AndroidManifest.xml:14:19-50
+26        <activity android:name="com.example.phone_remote_app.RemoteActivity" />
+26-->C:\Users\Marius\Desktop\Projekte\Phone_Remote\App\app\src\main\AndroidManifest.xml:15:9-52
+26-->C:\Users\Marius\Desktop\Projekte\Phone_Remote\App\app\src\main\AndroidManifest.xml:15:19-49
+27        <activity android:name="com.example.phone_remote_app.MainActivity" >
+27-->C:\Users\Marius\Desktop\Projekte\Phone_Remote\App\app\src\main\AndroidManifest.xml:16:9-21:20
+27-->C:\Users\Marius\Desktop\Projekte\Phone_Remote\App\app\src\main\AndroidManifest.xml:16:19-47
+28            <intent-filter>
+28-->C:\Users\Marius\Desktop\Projekte\Phone_Remote\App\app\src\main\AndroidManifest.xml:17:13-20:29
+29                <action android:name="android.intent.action.MAIN" />
+29-->C:\Users\Marius\Desktop\Projekte\Phone_Remote\App\app\src\main\AndroidManifest.xml:18:17-69
+29-->C:\Users\Marius\Desktop\Projekte\Phone_Remote\App\app\src\main\AndroidManifest.xml:18:25-66
+30
+31                <category android:name="android.intent.category.LAUNCHER" />
+31-->C:\Users\Marius\Desktop\Projekte\Phone_Remote\App\app\src\main\AndroidManifest.xml:19:17-77
+31-->C:\Users\Marius\Desktop\Projekte\Phone_Remote\App\app\src\main\AndroidManifest.xml:19:27-74
+32            </intent-filter>
+33        </activity>
+34    >
+35    </application>
+36
+37</manifest>
