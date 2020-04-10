@@ -34,30 +34,29 @@
 21-->C:\Users\Marius\Desktop\Projekte\Phone_Remote\App\app\src\main\AndroidManifest.xml:11:9-54
 22        android:supportsRtl="true"
 22-->C:\Users\Marius\Desktop\Projekte\Phone_Remote\App\app\src\main\AndroidManifest.xml:12:9-35
-23        android:testOnly="true"
-24        android:theme="@style/AppTheme" >
-24-->C:\Users\Marius\Desktop\Projekte\Phone_Remote\App\app\src\main\AndroidManifest.xml:13:9-40
-25        <activity android:name="com.example.phone_remote_app.OptionsActivity" />
-25-->C:\Users\Marius\Desktop\Projekte\Phone_Remote\App\app\src\main\AndroidManifest.xml:14:9-53
-25-->C:\Users\Marius\Desktop\Projekte\Phone_Remote\App\app\src\main\AndroidManifest.xml:14:19-50
-26        <activity android:name="com.example.phone_remote_app.RemoteActivity" />
-26-->C:\Users\Marius\Desktop\Projekte\Phone_Remote\App\app\src\main\AndroidManifest.xml:15:9-52
-26-->C:\Users\Marius\Desktop\Projekte\Phone_Remote\App\app\src\main\AndroidManifest.xml:15:19-49
-27        <activity android:name="com.example.phone_remote_app.MainActivity" >
-27-->C:\Users\Marius\Desktop\Projekte\Phone_Remote\App\app\src\main\AndroidManifest.xml:16:9-21:20
-27-->C:\Users\Marius\Desktop\Projekte\Phone_Remote\App\app\src\main\AndroidManifest.xml:16:19-47
-28            <intent-filter>
-28-->C:\Users\Marius\Desktop\Projekte\Phone_Remote\App\app\src\main\AndroidManifest.xml:17:13-20:29
-29                <action android:name="android.intent.action.MAIN" />
-29-->C:\Users\Marius\Desktop\Projekte\Phone_Remote\App\app\src\main\AndroidManifest.xml:18:17-69
-29-->C:\Users\Marius\Desktop\Projekte\Phone_Remote\App\app\src\main\AndroidManifest.xml:18:25-66
-30
-31                <category android:name="android.intent.category.LAUNCHER" />
-31-->C:\Users\Marius\Desktop\Projekte\Phone_Remote\App\app\src\main\AndroidManifest.xml:19:17-77
-31-->C:\Users\Marius\Desktop\Projekte\Phone_Remote\App\app\src\main\AndroidManifest.xml:19:27-74
-32            </intent-filter>
-33        </activity>
-34    >
-35    </application>
-36
-37</manifest>
+23        android:theme="@style/AppTheme" >
+23-->C:\Users\Marius\Desktop\Projekte\Phone_Remote\App\app\src\main\AndroidManifest.xml:13:9-40
+24        <activity android:name="com.example.phone_remote_app.OptionsActivity" />
+24-->C:\Users\Marius\Desktop\Projekte\Phone_Remote\App\app\src\main\AndroidManifest.xml:14:9-53
+24-->C:\Users\Marius\Desktop\Projekte\Phone_Remote\App\app\src\main\AndroidManifest.xml:14:19-50
+25        <activity android:name="com.example.phone_remote_app.RemoteActivity" />
+25-->C:\Users\Marius\Desktop\Projekte\Phone_Remote\App\app\src\main\AndroidManifest.xml:15:9-52
+25-->C:\Users\Marius\Desktop\Projekte\Phone_Remote\App\app\src\main\AndroidManifest.xml:15:19-49
+26        <activity android:name="com.example.phone_remote_app.MainActivity" >
+26-->C:\Users\Marius\Desktop\Projekte\Phone_Remote\App\app\src\main\AndroidManifest.xml:16:9-21:20
+26-->C:\Users\Marius\Desktop\Projekte\Phone_Remote\App\app\src\main\AndroidManifest.xml:16:19-47
+27            <intent-filter>
+27-->C:\Users\Marius\Desktop\Projekte\Phone_Remote\App\app\src\main\AndroidManifest.xml:17:13-20:29
+28                <action android:name="android.intent.action.MAIN" />
+28-->C:\Users\Marius\Desktop\Projekte\Phone_Remote\App\app\src\main\AndroidManifest.xml:18:17-69
+28-->C:\Users\Marius\Desktop\Projekte\Phone_Remote\App\app\src\main\AndroidManifest.xml:18:25-66
+29
+30                <category android:name="android.intent.category.LAUNCHER" />
+30-->C:\Users\Marius\Desktop\Projekte\Phone_Remote\App\app\src\main\AndroidManifest.xml:19:17-77
+30-->C:\Users\Marius\Desktop\Projekte\Phone_Remote\App\app\src\main\AndroidManifest.xml:19:27-74
+31            </intent-filter>
+32        </activity>
+33    >
+34    </application>
+35
+36</manifest>
