@@ -1,4 +1,4 @@
-#Fri Apr 10 19:42:14 CEST 2020
+#Fri Apr 10 20:01:22 CEST 2020
 base.0=C\:\\Users\\Marius\\Desktop\\Projekte\\Phone_Remote\\App\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\out\\classes.dex
 path.0=classes.dex
 renamed.0=classes.dex
