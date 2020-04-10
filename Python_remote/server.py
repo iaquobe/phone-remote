@@ -16,6 +16,27 @@ def show_connection():
     #img.show()
 
 
+def last_mouse(orders):
+    for order in orders[::-1]:
+        if order[0] == 'm':
+            return order
+    return order
+
+
+def clean_input(orders):
+    res = []
+    action = False
+    for order in orders:
+        if order[0] == 'a':
+            res.append(order)
+            action = True
+        elif order[0] == 'm' and action:
+            res.append(order)
+            action = False
+    res.append(last_mouse(orders))
+    return res
+
+
 def read(conn):
     down = False
     x_last = 0
@@ -25,7 +46,7 @@ def read(conn):
         data = conn.recv(1024).decode("utf-8")
         if not data:
             break
-        orders = data.split(",")
+        orders = clean_input(data.split(",")[:-1])
 
         print(orders)
 
