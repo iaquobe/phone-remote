@@ -22,32 +22,33 @@ def read(conn):
     y_last = 0
     data = ""
     while True:
-        data = data + conn.recv(1024).decode("utf-8")
+        data = conn.recv(1024).decode("utf-8")
         if not data:
             break
-        splited = data.split(",", 1)
-        order = splited[0]
-        data = splited[1]
-        print(order)
-        
-        if order.startswith("m"):
-            if down:
-                x_last, y_last = parse("m {:d} {:d}", order)
-                down = False
-            else:
-                x, y = parse("m {:d} {:d}", order)
-                pyautogui.move(x - x_last, y - y_last)
-                x_last = x
-                y_last = y
-        if order.startswith("b"):
-            button = parse("b {}", order)
-            pyautogui.click(button=button)
-        if order.startswith("k"):
-            text = parse("k {}", order)
-            pyautogui.press(text)
-        if order.startswith("a"):
-            if order[2] == "d":
-                down = True
+        orders = data.split(",")
+
+        print(orders)
+
+        for order in orders:
+            print(order)
+            if order.startswith("m"):
+                if down:
+                    x_last, y_last = parse("m {:d} {:d}", order)
+                    down = False
+                else:
+                    x, y = parse("m {:d} {:d}", order)
+                    pyautogui.move(x - x_last, y - y_last)
+                    x_last = x
+                    y_last = y
+            if order.startswith("b"):
+                button = parse("b {}", order)
+                pyautogui.click(button=button)
+            if order.startswith("k"):
+                text = parse("k {}", order)
+                pyautogui.press(text)
+            if order.startswith("a"):
+                if order[2] == "d":
+                    down = True
 
 
 
