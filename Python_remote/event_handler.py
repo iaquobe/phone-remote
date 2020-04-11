@@ -29,7 +29,7 @@ class event_handler:
                         x = int(words[1])
                         y = int(words[2])
                         
-                        pyautogui.move(x - x_last, y - y_last)
+                        pyautogui.move(x - x_last, y - y_last, duration=0.2)
 
                         x_last = x
                         y_last = y
