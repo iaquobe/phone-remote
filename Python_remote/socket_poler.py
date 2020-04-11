@@ -11,7 +11,7 @@ class socket_poler:
             
 
         self.mouse_buffer = collections.deque(maxlen=mouse_buffer_size)
-        self.important_list = []
+        self.important_list = collections.deque()
 
 
         self.port = port
@@ -20,6 +20,7 @@ class socket_poler:
     def pol(self):
         while True:
             conn, addr = self.socket.accept()
+            print("connected with {}".format(addr))
             while True:
                 data = conn.recv(1024).decode("utf-8")
                 if not data:
@@ -32,17 +33,18 @@ class socket_poler:
                     if order[0] != 'm' or down:
                         if order == "a d":
                             down = True
+                            self.mouse_buffer.clear()
                         self.important_list.append(order)
                     else:
                         self.mouse_buffer.append(order)
                 
-                print(self.orders())
-                
 
-    def orders(self):
-        res = self.important_list + list(self.mouse_buffer)
-        self.important_list = []
-        self.mouse_buffer.clear()
+    def orders(self, clear=True):
+        res = list(self.important_list) + list(self.mouse_buffer)
+
+        if clear:
+            self.important_list.clear()
+            self.mouse_buffer.clear()
 
         return res
 
