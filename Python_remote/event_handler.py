@@ -1,16 +1,18 @@
 import socket_poler
 import pyautogui
+from time import sleep
 
 class event_handler:
     def __init__(self, poler):
         self.poler = poler
+        pyautogui.PAUSE = 0
 
     def handle(self):
-        down = False
-        x_last = 0
-        y_last = 0
+        x_o = 0
+        y_o = 0
 
         while True:
+            sleep(0.02)
             orders = self.poler.orders()
             if orders != []:
                 print(orders)
@@ -19,20 +21,13 @@ class event_handler:
                 words = order.split(" ")
                 if words[0] == "a":
                     if words[1] == "d":
-                        down = True
-                elif words[0] == "m":
-                    if down:
-                        x_last = int(words[1])
-                        y_last = int(words[2])
-                        down = False
-                    else:
-                        x = int(words[1])
-                        y = int(words[2])
-                        
-                        pyautogui.move(x - x_last, y - y_last, duration=0.2)
+                        x_o, y_o = pyautogui.position()
 
-                        x_last = x
-                        y_last = y
+                elif words[0] == "m":
+                    x = int(words[1])
+                    y = int(words[2])
+                    
+                    pyautogui.moveTo(x + x_o, y + y_o)
 
 
 

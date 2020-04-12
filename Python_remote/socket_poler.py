@@ -27,13 +27,8 @@ class socket_poler:
                     break
                 orders = data.split(",")[:-1]
 
-                down = False
-
                 for order in orders:
-                    if order[0] != 'm' or down:
-                        if order == "a d":
-                            down = True
-                            self.mouse_buffer.clear()
+                    if order[0] != 'm':
                         self.important_list.append(order)
                     else:
                         self.mouse_buffer.append(order)

@@ -90,5 +90,5 @@ def connect():
             print("Connected by", addr)
             read(conn)
         
-
+pyautogui.PAUSE = 0
 connect()
