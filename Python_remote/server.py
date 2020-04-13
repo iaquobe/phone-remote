@@ -46,7 +46,10 @@ def read(conn):
         data = conn.recv(1024).decode("utf-8")
         if not data:
             break
-        orders = clean_input(data.split(",")[:-1])
+        orders = data.split(",")[:-1]
+        print(orders)
+
+        #orders = clean_input(orders)
 
         print(orders)
 
@@ -58,7 +61,7 @@ def read(conn):
                     down = False
                 else:
                     x, y = parse("m {:d} {:d}", order)
-                    pyautogui.move(x - x_last, y - y_last)
+                    pyautogui.move(x - x_last, y - y_last, duration=0.1, tween=pyautogui.easeInOutQuad)
                     x_last = x
                     y_last = y
             if order.startswith("b"):
@@ -87,5 +90,5 @@ def connect():
             print("Connected by", addr)
             read(conn)
         
-
+pyautogui.PAUSE = 0
 connect()
