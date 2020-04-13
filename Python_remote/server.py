@@ -49,7 +49,7 @@ def read(conn):
         orders = data.split(",")[:-1]
         print(orders)
 
-        orders = clean_input(orders)
+        #orders = clean_input(orders)
 
         print(orders)
 

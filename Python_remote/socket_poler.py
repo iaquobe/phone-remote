@@ -1,21 +1,15 @@
 import socket
-import collections
+import queue
 
 class socket_poler:
-    def __init__(self, mouse_buffer_size=2, host="", port=10000):
-
+    def __init__(self, buffer_size=None, host="", port=10000):
         self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         self.socket.bind((host, port))
         self.socket.listen()
-            
 
-        self.mouse_buffer = collections.deque(maxlen=mouse_buffer_size)
-        self.important_list = collections.deque()
+        self.buffer = queue.Queue()
 
-
-        self.port = port
-        self.host = host
 
     def pol(self):
         while True:
@@ -26,23 +20,12 @@ class socket_poler:
                 if not data:
                     break
                 orders = data.split(",")[:-1]
-
-                for order in orders:
-                    if order[0] != 'm':
-                        self.important_list.append(order)
-                    else:
-                        self.mouse_buffer.append(order)
                 
+                for order in orders:
+                    self.buffer.put(order)
 
-    def orders(self, clear=True):
-        res = list(self.important_list) + list(self.mouse_buffer)
-
-        if clear:
-            self.important_list.clear()
-            self.mouse_buffer.clear()
-
-        return res
-
+    def orders(self):
+        return self.buffer
 
     def connection(self):
         return "{}/{}/".format(socket.gethostbyname(socket.gethostname()), self.port)
