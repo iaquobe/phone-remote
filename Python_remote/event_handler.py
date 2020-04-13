@@ -19,6 +19,8 @@ class event_handler:
             if words[0] == "a":
                 if words[1] == "d":
                     x_o, y_o = pyautogui.position()
+                elif words[1] == "c":
+                    pyautogui.click()
 
             elif words[0] == "m":
                 x = int(words[1])

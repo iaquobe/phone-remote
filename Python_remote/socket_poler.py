@@ -10,6 +10,8 @@ class socket_poler:
 
         self.buffer = queue.Queue()
 
+        self.port = port
+
 
     def pol(self):
         while True:

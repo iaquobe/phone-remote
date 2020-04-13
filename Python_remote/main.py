@@ -1,12 +1,22 @@
 import socket_poler
 import event_handler
-import socket
+import getopt
+import sys
 from threading import Thread
 
-PORT = 10000
+port = 10000
+verbose = False
 
 def main():
-    poler = socket_poler.socket_poler(port=PORT, mouse_buffer_size=1)
+    global port,verbose
+    optlist = dict(getopt.getopt(sys.argv[1:],'vp:')[0])
+
+    if "-p" in optlist:
+        port = int(optlist["-p"])
+    if "-v" in optlist:
+        verbose = True
+
+    poler = socket_poler.socket_poler(port=port, buffer_size=1)
     handler = event_handler.event_handler(poler)
 
     print(poler.connection())
