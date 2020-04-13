@@ -22,7 +22,7 @@ class socket_poler:
                 data = conn.recv(1024).decode("utf-8")
                 if not data:
                     break
-                orders = data.split(",")[:-1]
+                orders = data.split(u"\u0003")[:-1]
                 
                 for order in orders:
                     self.buffer.put(order)

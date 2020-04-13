@@ -31,7 +31,12 @@ class event_handler:
                 y = int(words[2])
                 
                 pyautogui.moveTo(x + x_o, y + y_o)
-
+            
+            elif words[0] == "k":
+                if words.length == 1:
+                    pyautogui.press(" ")
+                else:
+                    pyautogui.press(words[1])
 
 
 
