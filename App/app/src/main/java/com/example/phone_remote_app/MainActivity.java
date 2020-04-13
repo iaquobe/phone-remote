@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void updateConnectBut(){
+    public void updateConnectBut(){
         if(connector == null || !connector.isConnected()){
             connectButton.setText("Connect");
             connectButton.setOnClickListener(connectClick);

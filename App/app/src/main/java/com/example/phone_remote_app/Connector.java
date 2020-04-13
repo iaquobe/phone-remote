@@ -120,13 +120,20 @@ public class Connector implements ConnectorInterface {
             if (!success){
                 main.removeConnector();
             }
+            main.updateConnectBut();
         }
+
     }
 
     private class CloseConnectionTask extends AsyncTask<Void,Void,Boolean>{
         @Override
         protected Boolean doInBackground(Void... Voids) {
             return closeConnectionOp();
+        }
+
+        @Override
+        protected void onPostExecute(Boolean aBoolean) {
+            main.updateConnectBut();
         }
     }
 
