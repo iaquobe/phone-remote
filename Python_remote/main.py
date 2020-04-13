@@ -1,23 +1,33 @@
 import socket_poler
 import event_handler
+import options
+
 import getopt
 import sys
 from threading import Thread
 
-port = 10000
-verbose = False
+verbose=False
+port=10000
+host=""
 
+def get_options():
+    global verbose, port, host
+
+    optdict = dict(getopt.getopt(sys.argv[1:],'vp:')[0])
+
+    if "-p" in optdict:
+        port = int(optdict["-p"])
+
+    verbose = ("-v" in optdict)
+
+    return options.Options(verbose=verbose, port=port, host=host)
+
+    
 def main():
-    global port,verbose
-    optlist = dict(getopt.getopt(sys.argv[1:],'vp:')[0])
+    options = get_options()
 
-    if "-p" in optlist:
-        port = int(optlist["-p"])
-    if "-v" in optlist:
-        verbose = True
-
-    poler = socket_poler.socket_poler(port=port, buffer_size=1)
-    handler = event_handler.event_handler(poler)
+    poler = socket_poler.socket_poler(options, buffer_size=1)
+    handler = event_handler.event_handler(options, poler)
 
     print(poler.connection())
 
